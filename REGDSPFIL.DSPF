@@ -1,0 +1,39 @@
+     A*%%TS  SD  20230611  073259  DEVKYN      REL-V7R5M0  5770-WDS
+     A*%%EC
+     A                                      DSPSIZ(24 80 *DS3)
+     A          R FILELIST                  SFL
+     A*%%TS  SD  20230611  073259  DEVKYN      REL-V7R5M0  5770-WDS
+     A            D_FILEN       65A  O  9  3
+     A            D_FILET        5A  O  9 71
+     A          R FILELISTA                 SFLCTL(FILELIST)
+     A*%%TS  SD  20230611  073259  DEVKYN      REL-V7R5M0  5770-WDS
+     A                                      SFLSIZ(0011)
+     A                                      SFLPAG(0010)
+     A                                      PAGEUP(51)
+     A                                      PAGEDOWN(52)
+     A                                      CA03(03)
+     A                                      OVERLAY
+     A                                      SFLCSRRRN(&CSRRRN)
+     A  91                                  SFLDSP
+     A  92                                  SFLDSPCTL
+     A N92                                  SFLCLR
+     A  93                                  SFLEND(*MORE)
+     A            CSRRRN         5S 0H
+     A            DRECNO         4S 0H      SFLRCDNBR(CURSOR)
+     A                                  5  3'Search Name:'
+     A            FILNAM        65A  I  5 16
+     A                                  8 71'Type'
+     A                                      COLOR(BLU)
+     A                                  8  4'File Name'
+     A                                      COLOR(BLU)
+     A          R HEADER
+     A*%%TS  SD  20230611  073018  DEVKYN      REL-V7R5M0  5770-WDS
+     A                                      OVERLAY
+     A                                  1  5USER
+     A                                  1 58DATE
+     A                                      EDTCDE(Y)
+     A                                  2 58TIME
+     A                                  1 26'File Listing'
+     A          R TRAILER
+     A                                      OVERLAY
+     A                                 21 04'F3 - EXIT'

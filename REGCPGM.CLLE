@@ -1,0 +1,19 @@
+PGM PARM(&DIR &FILT &PATT)
+             DCL        VAR(&DIR) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&FILT) TYPE(*CHAR) LEN(4)
+             DCL        VAR(&PATT) TYPE(*CHAR) LEN(65)
+
+             DCL        VAR(&DIR1) TYPE(*CHAR) LEN(20)
+             DCL        VAR(&FILT1) TYPE(*CHAR) LEN(4)
+             DCL        VAR(&PATT1) TYPE(*CHAR) LEN(65)
+             CHGVAR     VAR(&DIR1) VALUE(%TRIM(&DIR))
+             CHGVAR     VAR(&FILT1) VALUE(%TRIM(&FILT))
+             CHGVAR     VAR(&PATT1) VALUE(%TRIM(&PATT))
+             DLTOBJ     OBJ(QTEMP/REGF) OBJTYPE(*FILE)
+             MONMSG     MSGID(CPF2105)
+             CRTPF      FILE(QTEMP/REGF) SRCFILE(DEVKYN1/QDDSSRC)
+             MONMSG     MSGID(CPF7302) EXEC(GOTO CMDLBL(PGMEND))
+             CALL       PGM(REGEX) PARM(&DIR1 &FILT1 &PATT1)
+             CALL       PGM(REGDSPPGM)
+PGMEND:
+ENDPGM
