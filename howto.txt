@@ -1,0 +1,25 @@
+Compile the source codes in following sequence
+
+1) Compile REGF.PF file
+2) Compile REGDSPFIL.DSPF file
+3) Compile REGDSPPGM.RPGLE pgm
+4) Compile REGEX.C pgm
+5) Compile REGCPGM.CLLE pgm
+6) Compile REGEXCMD.CMD command
+
+The application can be invoked by any of following methods
+
+a) REGEXCMD DIR(<expected directory name say /, /etc/, /home/tester, etc.,>)  
+         FILTYPE(file extension say c,py,tiff,pdf)           
+         FILPATT(patter,like hello)
+
+Note: In this method, the values passed by reference to processing CL has 
+attribute type prefixed in my test machine. It may work on your AS400 machine.
+
+b) CALL PGM(QTEMP/REGCPGM)                       
+     PARM(('/home/Tester') ('c') ('hello'))   
+     
+c) In both methods, you would get a display screen listing all the matching patterns. 
+Pressing F3 on this screen will take you out of the tool. Considering, real world
+scenarios, there could by more than 9999 files in those cases we may need single page
+or elastic subfiles. For this case, I used load all subfile.
